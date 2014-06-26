@@ -11,15 +11,22 @@ import ch.leafit.gdc.core.data_fields.styles.GDCDataFieldStyle;
  */
 public abstract class GDCDataField  {
     protected View mView;
+    protected int mTag;
 
     protected Activity mActivity;
     protected static LayoutInflater mInflater= null;
 
     protected GDCDataFieldStyle mStyle;
 
-    public GDCDataField(Activity activity) {
+    /**
+     *
+     * @param activity
+     * @param tag value can be used to recognize the field
+     */
+    public GDCDataField(Activity activity, int tag) {
         mActivity = activity;
         mInflater = ( LayoutInflater )activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        mTag = tag;
     }
 
     public abstract View getView();
@@ -36,5 +43,9 @@ public abstract class GDCDataField  {
         if(mView != null && mStyle != null) {
             mView.setBackgroundColor(mStyle.backgroundColor);
         }
+    }
+
+    public int getTag() {
+        return mTag;
     }
 }

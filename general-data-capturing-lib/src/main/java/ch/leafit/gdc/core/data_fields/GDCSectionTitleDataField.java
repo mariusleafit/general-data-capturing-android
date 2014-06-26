@@ -19,7 +19,7 @@ public class GDCSectionTitleDataField extends GDCDataField {
     protected TextView mLblTitle;
 
     public GDCSectionTitleDataField(Activity activity, String title) {
-        super(activity);
+        super(activity, -1);
         mTitle = title;
     }
 
