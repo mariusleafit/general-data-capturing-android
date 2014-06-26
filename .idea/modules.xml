@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/general-data-capturing-lib/general-data-capturing-lib.iml" filepath="$PROJECT_DIR$/general-data-capturing-lib/general-data-capturing-lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/general-data-capturing-parent.iml" filepath="$PROJECT_DIR$/general-data-capturing-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/general-data-capturing-test/general-data-capturing-test.iml" filepath="$PROJECT_DIR$/general-data-capturing-test/general-data-capturing-test.iml" />
+    </modules>
+  </component>
+</project>
+
