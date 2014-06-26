@@ -1,0 +1,4 @@
+int id lblTitle 0x7f040000
+int layout section_title_data_field 0x7f020000
+int string hello 0x7f030000
+int string lib_name 0x7f030001
