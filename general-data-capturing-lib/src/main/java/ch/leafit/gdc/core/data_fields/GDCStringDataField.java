@@ -1,8 +1,11 @@
 package ch.leafit.gdc.core.data_fields;
 
 import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
@@ -22,8 +25,8 @@ public class GDCStringDataField extends GDCDataField {
     protected GDCStringDataFieldType mType;
 
     /*UI-Elements*/
-    protected TextView mLblFieldName;
-    protected EditText mTxtValue;
+    public TextView mLblFieldName;
+    public EditText mTxtValue;
 
 
     /**
@@ -32,7 +35,10 @@ public class GDCStringDataField extends GDCDataField {
      * @param type defines the type of txtValue
      */
     public GDCStringDataField(Activity activity, int tag, String fieldName, String defaultValue, GDCDataFieldCallback<String> callback, GDCStringDataFieldType type) {
-        this(activity,tag,fieldName,defaultValue,callback);
+        super(activity,tag);
+        mFieldName = fieldName;
+        mValue = defaultValue;
+        mCallback = callback;
         mType = type;
     }
 
@@ -41,8 +47,7 @@ public class GDCStringDataField extends GDCDataField {
      * @param tag value can be used to recognize the field
      */
     public GDCStringDataField(Activity activity, int tag, String fieldName, String defaultValue, GDCDataFieldCallback<String> callback) {
-        this(activity, tag, fieldName,defaultValue);
-        mCallback = callback;
+        this(activity, tag, fieldName,defaultValue,callback,GDCStringDataFieldType.GDCStringDataFieldTypeNORMAL);
     }
 
 
@@ -52,8 +57,7 @@ public class GDCStringDataField extends GDCDataField {
      * @param type defines the type of txtValue
      */
     public GDCStringDataField(Activity activity, int tag, String fieldName, String defaultValue, GDCStringDataFieldType type) {
-        this(activity,tag,fieldName,defaultValue);
-        mType = type;
+        this(activity,tag,fieldName,defaultValue,null,type);
     }
 
     /**
@@ -61,9 +65,7 @@ public class GDCStringDataField extends GDCDataField {
      * @param tag value can be used to recognize the field
      */
     public GDCStringDataField(Activity activity, int tag, String fieldName, String defaultValue) {
-        super(activity, tag);
-        mFieldName = fieldName;
-        mValue = defaultValue;
+        this(activity,tag,fieldName,defaultValue,null,GDCStringDataFieldType.GDCStringDataFieldTypeNORMAL);
     }
 
     @Override
@@ -99,6 +101,13 @@ public class GDCStringDataField extends GDCDataField {
 
                     }
                 });
+
+                mTxtValue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                    @Override
+                    public void onFocusChange(View view, boolean b) {
+                        Log.i("focus", mFieldName);
+                    }
+                });
             }
 
             this.applyStyle();
@@ -109,14 +118,11 @@ public class GDCStringDataField extends GDCDataField {
 
     @Override
     protected void applyStyle() {
-        super.applyStyle();
-
         if(mView != null) {
             if(mStyle == null) {
                 mStyle = new GDCStringDataFieldDefaultStyle();
             }
-
-
+            mStyle.applyStyleToField(this);
         }
     }
 
@@ -160,13 +166,13 @@ public class GDCStringDataField extends GDCDataField {
         if(mTxtValue != null) {
             switch (type) {
                 case GDCStringDataFieldTypeNORMAL:
-                    mTxtValue.setInputType(EditorInfo.TYPE_TEXT_VARIATION_NORMAL);
+                    mTxtValue.setInputType(EditorInfo.TYPE_CLASS_TEXT);
                     break;
                 case GDCStringDataFieldTypePASSWORD:
-                    mTxtValue.setInputType(EditorInfo.TYPE_TEXT_VARIATION_PASSWORD);
+                    mTxtValue.setInputType(EditorInfo.TYPE_CLASS_TEXT| EditorInfo.TYPE_TEXT_VARIATION_PASSWORD);
                     break;
                 case GDCStringDataFieldTypeEMAIL:
-                    mTxtValue.setInputType(EditorInfo.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+                    mTxtValue.setInputType(EditorInfo.TYPE_CLASS_TEXT|EditorInfo.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
                     break;
                 case GDCStringDataFieldTypeNUMERIC:
                     mTxtValue.setInputType(EditorInfo.TYPE_CLASS_NUMBER);
@@ -174,6 +180,8 @@ public class GDCStringDataField extends GDCDataField {
                 case GDCStringDataFieldTypeDATE:
                     mTxtValue.setInputType(EditorInfo.TYPE_CLASS_DATETIME);
                     break;
+                default:
+                    mTxtValue.setInputType(EditorInfo.TYPE_CLASS_TEXT);
             }
         }
     }

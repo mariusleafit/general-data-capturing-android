@@ -19,6 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".universal_list.activities.ULSearchListActivity"></activity>
+        <activity android:name=".universal_list.activities.ULListActivity"></activity>
     </application>
 
 </manifest>

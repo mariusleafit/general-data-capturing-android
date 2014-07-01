@@ -29,6 +29,13 @@
             <groupId>ch.leafit</groupId>
             <artifactId>general-data-capturing-lib</artifactId>
             <version>1.0-SNAPSHOT</version>
+            <type>apklib</type>
+        </dependency>
+        <dependency>
+            <groupId>ch.leafit</groupId>
+            <artifactId>universal-list-library</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>apklib</type>
         </dependency>
     </dependencies>
     <build>

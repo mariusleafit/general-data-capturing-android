@@ -9,7 +9,6 @@
 	<name>general-data-capturing - Parent</name>
 
 	<modules>
-        <module>general-data-capturing-test</module>
         <module>general-data-capturing-lib</module>
     </modules>
 

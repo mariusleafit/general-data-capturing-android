@@ -5,6 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/general-data-capturing-lib/general-data-capturing-lib.iml" filepath="$PROJECT_DIR$/general-data-capturing-lib/general-data-capturing-lib.iml" />
       <module fileurl="file://$PROJECT_DIR$/general-data-capturing-parent.iml" filepath="$PROJECT_DIR$/general-data-capturing-parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/general-data-capturing-test/general-data-capturing-test.iml" filepath="$PROJECT_DIR$/general-data-capturing-test/general-data-capturing-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/general-data-capturing-lib/gen-external-apklibs/~apklib-ch.leafit.iac_inter-activity-communication-lib_1.0-SNAPSHOT.iml" filepath="$PROJECT_DIR$/general-data-capturing-lib/gen-external-apklibs/~apklib-ch.leafit.iac_inter-activity-communication-lib_1.0-SNAPSHOT.iml" />
+      <module fileurl="file://$PROJECT_DIR$/general-data-capturing-lib/gen-external-apklibs/~apklib-ch.leafit_universal-list-library_1.0-SNAPSHOT.iml" filepath="$PROJECT_DIR$/general-data-capturing-lib/gen-external-apklibs/~apklib-ch.leafit_universal-list-library_1.0-SNAPSHOT.iml" />
     </modules>
   </component>
 </project>

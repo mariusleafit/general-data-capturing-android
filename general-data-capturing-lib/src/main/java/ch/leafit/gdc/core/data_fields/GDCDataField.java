@@ -10,13 +10,18 @@ import ch.leafit.gdc.core.data_fields.styles.GDCDataFieldStyle;
  * Created by marius on 25/06/14.
  */
 public abstract class GDCDataField  {
-    protected View mView;
+    public View mView;
     protected int mTag;
 
     protected Activity mActivity;
     protected static LayoutInflater mInflater= null;
 
     protected GDCDataFieldStyle mStyle;
+
+    protected GDCDataFieldMarking mMarking = GDCDataFieldMarking.NOT_MARKED;
+
+    protected boolean mDisabled = false;
+
 
     /**
      *
@@ -33,19 +38,44 @@ public abstract class GDCDataField  {
 
     public void setStyle(GDCDataFieldStyle style) {
         mStyle = style;
-        this.applyStyle();
+        applyStyle();
     }
 
     /**
      * applies the settings from the style to mView
      */
-    protected void applyStyle() {
-        if(mView != null && mStyle != null) {
-            mView.setBackgroundColor(mStyle.backgroundColor);
-        }
-    }
+    protected abstract void applyStyle();
 
     public int getTag() {
         return mTag;
+    }
+
+    /**
+     * indicates to the user that the field was or wasn't filled properly with data
+     */
+    public void setMarking(GDCDataFieldMarking marking) {
+        mMarking = marking;
+        applyStyle();
+    }
+
+    public GDCDataFieldMarking getMarking() {
+        return mMarking;
+    }
+
+    public boolean isDisabled() {
+        return mDisabled;
+    }
+    public void setDisabled(boolean disabled) {
+        mDisabled = disabled;
+        applyStyle();
+    }
+
+    /**
+     * different types of marking
+     */
+    public enum GDCDataFieldMarking {
+        MARKED_AS_INVALID,
+        MARKED_AS_VALID,
+        NOT_MARKED
     }
 }

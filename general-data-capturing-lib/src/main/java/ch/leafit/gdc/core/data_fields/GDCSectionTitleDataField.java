@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 import ch.leafit.R;
 import ch.leafit.gdc.core.data_fields.styles.GDCDataFieldStyle;
+import ch.leafit.gdc.core.data_fields.styles.GDCSectionTitleDataFieldDefaultStyle;
 
 import javax.xml.soap.Text;
 
@@ -16,7 +17,7 @@ public class GDCSectionTitleDataField extends GDCDataField {
     protected  String mTitle;
 
     /*UI-Elements*/
-    protected TextView mLblTitle;
+    public TextView mLblTitle;
 
     public GDCSectionTitleDataField(Activity activity, String title) {
         super(activity, -1);
@@ -37,10 +38,11 @@ public class GDCSectionTitleDataField extends GDCDataField {
 
     @Override
     protected void applyStyle() {
-        super.applyStyle();
-
-        if(mView != null && mStyle != null) {
-            
+        if(mView != null) {
+            if(mStyle == null) {
+                mStyle = new GDCSectionTitleDataFieldDefaultStyle();
+            }
+            mStyle.applyStyleToField(this);
         }
     }
 

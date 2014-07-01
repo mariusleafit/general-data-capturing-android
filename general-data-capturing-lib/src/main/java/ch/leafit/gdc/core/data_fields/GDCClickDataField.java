@@ -22,7 +22,8 @@ public class GDCClickDataField extends GDCDataField {
     protected GDCClickDataFieldCallback mCallback;
 
     /*UI-Elements*/
-    protected TextView mLblFieldName;
+    public TextView mLblFieldName;
+    public TextView mLblDisclosureIndicator;
 
     public GDCClickDataField(Activity activity, int tag, String fieldName, GDCClickDataFieldCallback callback) {
         super(activity, tag);
@@ -36,6 +37,7 @@ public class GDCClickDataField extends GDCDataField {
             mView = mInflater.inflate(R.layout.click_data_field, null);
 
             mLblFieldName = (TextView)mView.findViewById(R.id.lblFieldName);
+            mLblDisclosureIndicator = (TextView)mView.findViewById(R.id.lblDisclosureIndicator);
 
             this.setFieldName(mFieldName);
 
@@ -56,14 +58,11 @@ public class GDCClickDataField extends GDCDataField {
 
     @Override
     protected void applyStyle() {
-        super.applyStyle();
-
         if(mView != null) {
             if(mStyle == null) {
                 mStyle = new GDCClickDataFieldDefaultStyle();
             }
-
-
+            mStyle.applyStyleToField(this);
         }
     }
 
