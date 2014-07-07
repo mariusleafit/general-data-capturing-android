@@ -1,19 +1,16 @@
-package ch.leafit.gdc.core.data_fields.styles;
-
+package ch.leafit.gdc.styles;
 
 import android.graphics.Color;
 import android.graphics.Typeface;
-import ch.leafit.gdc.core.data_fields.GDCDataField;
-import ch.leafit.gdc.core.data_fields.GDCListDataField;
+import ch.leafit.gdc.GDCClickDataField;
 
 /**
- * Created by marius on 30/06/14.
+ * Created by marius on 26/06/14.
  */
-public class GDCListDataFieldDefaultStyle extends GDCDataFieldStyle<GDCListDataField>{
+public class GDCClickDataFieldDefaultStyle extends GDCDataFieldStyle<GDCClickDataField> {
     @Override
-    public void applyStyleToField(GDCListDataField field) {
+    public void applyStyleToField(GDCClickDataField field) {
         field.mView.setBackgroundColor(Color.BLACK);
-
 
         field.mLblFieldName.setTextSize(20);
         field.mLblFieldName.setTypeface(Typeface.DEFAULT_BOLD);
@@ -22,6 +19,7 @@ public class GDCListDataFieldDefaultStyle extends GDCDataFieldStyle<GDCListDataF
         field.mLblDisclosureIndicator.setTextSize(20);
         field.mLblDisclosureIndicator.setTypeface(Typeface.DEFAULT_BOLD);
 
+        /*marking*/
         switch (field.getMarking()) {
             case MARKED_AS_INVALID:
                 field.mLblFieldName.setTextColor(Color.RED);

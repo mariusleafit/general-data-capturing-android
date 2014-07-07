@@ -1,13 +1,13 @@
-package ch.leafit.gdc.core.data_fields;
+package ch.leafit.gdc;
 
 import android.app.Activity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import ch.leafit.R;
-import ch.leafit.gdc.core.data_fields.callback.GDCDataFieldCallback;
-import ch.leafit.gdc.core.data_fields.styles.GDCIntegerDataFieldDefaultStyle;
+import ch.leafit.gdc.R;
+import ch.leafit.gdc.callback.GDCDataFieldCallback;
+import ch.leafit.gdc.styles.GDCIntegerDataFieldDefaultStyle;
 
 /**
  * Created by marius on 30/06/14.
@@ -72,7 +72,7 @@ public class GDCIntegerDataField extends GDCDataField {
     protected void applyStyle() {
         if(mView != null) {
             if(mStyle == null) {
-                mStyle = new GDCIntegerDataFieldDefaultStyle();
+                mStyle = GDCDefaultStyleConfig.integerDataFieldDefaultStyle;
             }
             mStyle.applyStyleToField(this);
         }

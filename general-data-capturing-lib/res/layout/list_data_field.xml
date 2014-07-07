@@ -11,7 +11,15 @@
               android:layout_width="0dp"
               android:layout_weight="1"
               android:layout_height="wrap_content"
-              android:id="@+id/lblFieldName"/>
+              android:id="@+id/lblFieldName"
+              android:singleLine="true"/>
+    
+    <TextView android:layout_gravity="center"
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:singleLine="true"
+              android:id="@+id/lblValue"/>
 
     <TextView android:layout_width="wrap_content"
               android:layout_height="wrap_content"

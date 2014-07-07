@@ -1,23 +1,21 @@
-package ch.leafit.gdc.core.data_fields.styles;
+package ch.leafit.gdc.styles;
 
 import android.graphics.Color;
 import android.graphics.Typeface;
-import ch.leafit.gdc.core.data_fields.GDCDataField;
-import ch.leafit.gdc.core.data_fields.GDCIntegerDataField;
+import ch.leafit.gdc.GDCStringDataField;
 
 /**
- * Created by marius on 30/06/14.
+ * Created by marius on 26/06/14.
  */
-public class GDCIntegerDataFieldDefaultStyle extends GDCDataFieldStyle<GDCIntegerDataField> {
+public class GDCStringDataFieldDefaultStyle extends GDCDataFieldStyle<GDCStringDataField> {
     @Override
-    public void applyStyleToField(GDCIntegerDataField field) {
+    public void applyStyleToField(GDCStringDataField field) {
         field.mView.setBackgroundColor(Color.BLACK);
-
         field.mLblFieldName.setTextSize(20);
         field.mLblFieldName.setTypeface(Typeface.DEFAULT_BOLD);
 
-        field.mTxtInteger.setTextColor(Color.WHITE);
-        field.mTxtInteger.setBackgroundColor(Color.argb(30,255,255,255));
+        field.mTxtValue.setTextColor(Color.WHITE);
+        field.mTxtValue.setBackgroundColor(Color.argb(30,255,255,255));
 
         switch (field.getMarking()) {
             case MARKED_AS_INVALID:
@@ -33,14 +31,11 @@ public class GDCIntegerDataFieldDefaultStyle extends GDCDataFieldStyle<GDCIntege
 
         super.applyStyleToField(field);
         if(field.isDisabled()) {
-            field.mTxtInteger.setEnabled(false);
-            field.mBtnPlus.setEnabled(false);
-            field.mBtnMinus.setEnabled(false);
+            field.mTxtValue.setEnabled(false);
         } else {
-            field.mTxtInteger.setEnabled(true);
-            field.mBtnPlus.setEnabled(true);
-            field.mBtnMinus.setEnabled(true);
+            field.mTxtValue.setEnabled(true);
         }
+
     }
 
 }

@@ -1,9 +1,7 @@
-package ch.leafit.gdc.core.data_fields.styles;
+package ch.leafit.gdc.styles;
 
 import android.graphics.Color;
-import ch.leafit.gdc.core.data_fields.GDCClickDataField;
-import ch.leafit.gdc.core.data_fields.GDCDataField;
-import ch.leafit.gdc.core.data_fields.GDCSectionTitleDataField;
+import ch.leafit.gdc.GDCSectionTitleDataField;
 
 /**
  * Created by marius on 01/07/14.

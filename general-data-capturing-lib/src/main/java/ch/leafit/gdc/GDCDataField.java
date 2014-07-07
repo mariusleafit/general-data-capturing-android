@@ -1,10 +1,10 @@
-package ch.leafit.gdc.core.data_fields;
+package ch.leafit.gdc;
 
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import ch.leafit.gdc.core.data_fields.styles.GDCDataFieldStyle;
+import ch.leafit.gdc.styles.GDCDataFieldStyle;
 
 /**
  * Created by marius on 25/06/14.

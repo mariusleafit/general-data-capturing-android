@@ -1,9 +1,8 @@
-package ch.leafit.gdc.core.data_fields.styles;
+package ch.leafit.gdc.styles;
 
 import android.graphics.Color;
 import android.graphics.Typeface;
-import ch.leafit.gdc.core.data_fields.GDCDataField;
-import ch.leafit.gdc.core.data_fields.GDCDateDataField;
+import ch.leafit.gdc.GDCDateDataField;
 
 /**
  * Created by marius on 01/07/14.

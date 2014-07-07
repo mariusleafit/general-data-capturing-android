@@ -1,8 +1,6 @@
-package ch.leafit.gdc.core.data_fields;
+package ch.leafit.gdc;
 
 import android.app.Activity;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -10,9 +8,9 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
-import ch.leafit.R;
-import ch.leafit.gdc.core.data_fields.callback.GDCDataFieldCallback;
-import ch.leafit.gdc.core.data_fields.styles.GDCStringDataFieldDefaultStyle;
+import ch.leafit.gdc.R;
+import ch.leafit.gdc.callback.GDCDataFieldCallback;
+import ch.leafit.gdc.styles.GDCStringDataFieldDefaultStyle;
 
 /**
  * Created by marius on 25/06/14.
@@ -120,7 +118,7 @@ public class GDCStringDataField extends GDCDataField {
     protected void applyStyle() {
         if(mView != null) {
             if(mStyle == null) {
-                mStyle = new GDCStringDataFieldDefaultStyle();
+                mStyle = GDCDefaultStyleConfig.stringDataFieldDefaultStyle;
             }
             mStyle.applyStyleToField(this);
         }

@@ -1,17 +1,9 @@
-package ch.leafit.gdc.core.data_fields;
+package ch.leafit.gdc;
 
 import android.app.Activity;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
-import android.widget.EditText;
 import android.widget.TextView;
-import ch.leafit.R;
-import ch.leafit.gdc.core.data_fields.callback.GDCClickDataFieldCallback;
-import ch.leafit.gdc.core.data_fields.callback.GDCDataFieldCallback;
-import ch.leafit.gdc.core.data_fields.styles.GDCClickDataFieldDefaultStyle;
-import ch.leafit.gdc.core.data_fields.styles.GDCStringDataFieldDefaultStyle;
+import ch.leafit.gdc.callback.GDCClickDataFieldCallback;
 
 /**
  * Created by marius on 26/06/14.
@@ -60,7 +52,7 @@ public class GDCClickDataField extends GDCDataField {
     protected void applyStyle() {
         if(mView != null) {
             if(mStyle == null) {
-                mStyle = new GDCClickDataFieldDefaultStyle();
+                mStyle = GDCDefaultStyleConfig.clickDataFieldDefaultStyle;
             }
             mStyle.applyStyleToField(this);
         }
@@ -76,4 +68,6 @@ public class GDCClickDataField extends GDCDataField {
         }
         mFieldName = fieldName;
     }
+
+
 }

@@ -1,13 +1,9 @@
-package ch.leafit.gdc.core.data_fields;
+package ch.leafit.gdc;
 
 import android.app.Activity;
 import android.view.View;
 import android.widget.TextView;
-import ch.leafit.R;
-import ch.leafit.gdc.core.data_fields.styles.GDCDataFieldStyle;
-import ch.leafit.gdc.core.data_fields.styles.GDCSectionTitleDataFieldDefaultStyle;
-
-import javax.xml.soap.Text;
+import ch.leafit.gdc.styles.GDCSectionTitleDataFieldDefaultStyle;
 
 /**
  * Created by marius on 25/06/14.
@@ -40,7 +36,7 @@ public class GDCSectionTitleDataField extends GDCDataField {
     protected void applyStyle() {
         if(mView != null) {
             if(mStyle == null) {
-                mStyle = new GDCSectionTitleDataFieldDefaultStyle();
+                mStyle = GDCDefaultStyleConfig.sectionTitleDataFieldDefaultStyle;
             }
             mStyle.applyStyleToField(this);
         }

@@ -1,9 +1,8 @@
-package ch.leafit.gdc.core;
+package ch.leafit.gdc;
 
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import ch.leafit.gdc.core.data_fields.GDCDataField;
 
 import java.util.ArrayList;
 

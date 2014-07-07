@@ -1,4 +1,4 @@
-package ch.leafit.gdc.core.data_fields;
+package ch.leafit.gdc;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -11,9 +11,9 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import ch.leafit.R;
-import ch.leafit.gdc.core.data_fields.callback.GDCDataFieldCallback;
-import ch.leafit.gdc.core.data_fields.styles.GDCDateDataFieldDefaultStyle;
+import ch.leafit.gdc.R;
+import ch.leafit.gdc.callback.GDCDataFieldCallback;
+import ch.leafit.gdc.styles.GDCDateDataFieldDefaultStyle;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -119,7 +119,7 @@ public class GDCDateDataField extends GDCDataField implements TimePickerDialog.O
     protected void applyStyle() {
         if(mView != null) {
             if(mStyle == null) {
-                mStyle = new GDCDateDataFieldDefaultStyle();
+                mStyle = GDCDefaultStyleConfig.dateDataFieldDefaultStyle;
             }
             mStyle.applyStyleToField(this);
         }

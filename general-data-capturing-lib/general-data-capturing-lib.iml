@@ -9,6 +9,8 @@
         <option name="APK_PATH" value="/target/general-data-capturing-lib.apk" />
         <option name="LIBRARY_PROJECT" value="true" />
         <option name="RUN_PROCESS_RESOURCES_MAVEN_TASK" value="false" />
+        <option name="USE_CUSTOM_MANIFEST_PACKAGE" value="true" />
+        <option name="CUSTOM_MANIFEST_PACKAGE" value="ch.leafit.gdc" />
         <option name="COMPILE_CUSTOM_GENERATED_SOURCES" value="false" />
         <includeAssetsFromLibraries>true</includeAssetsFromLibraries>
         <resOverlayFolders>
@@ -42,9 +44,9 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: xerces:xmlParserAPIs:2.6.2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: xpp3:xpp3:1.1.4c" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.json:json:20080701" level="project" />
+    <orderEntry type="library" name="Maven: com.android.support:support-v4:19.1.0" level="project" />
     <orderEntry type="module" module-name="~apklib-ch.leafit.iac_inter-activity-communication-lib_1.0-SNAPSHOT" />
-    <orderEntry type="module" module-name="~apklib-ch.leafit_universal-list-library_1.0-SNAPSHOT" />
-    <orderEntry type="library" name="19.1" level="project" />
+    <orderEntry type="module" module-name="~apklib-ch.leafit.ul_universal-list-library_1.0-SNAPSHOT" />
   </component>
 </module>
 

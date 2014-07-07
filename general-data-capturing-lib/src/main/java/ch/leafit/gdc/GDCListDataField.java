@@ -1,17 +1,16 @@
-package ch.leafit.gdc.core.data_fields;
+package ch.leafit.gdc;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
-import ch.leafit.R;
-import ch.leafit.gdc.core.data_fields.styles.GDCDataFieldStyle;
-import ch.leafit.gdc.core.data_fields.styles.GDCListDataFieldDefaultStyle;
-import ch.leafit.universal_list.activities.ULListActivity;
-import ch.leafit.universal_list.activities.ULSearchListActivity;
-import ch.leafit.universal_list.activities.intent_datastores.ULListActivityIntentDatastore;
-import ch.leafit.universal_list.list_items.ULListItemBaseModel;
+import ch.leafit.gdc.styles.GDCDataFieldStyle;
+import ch.leafit.ul.activities.ULListActivity;
+import ch.leafit.ul.activities.ULSearchListActivity;
+import ch.leafit.ul.activities.intent_datastores.ULListActivityIntentDatastore;
+import ch.leafit.ul.list_items.ULListItemBaseModel;
+
 
 import java.util.ArrayList;
 
@@ -32,6 +31,7 @@ public class GDCListDataField extends GDCDataField {
     /*UI-Elements*/
     public TextView mLblFieldName;
     public TextView mLblDisclosureIndicator;
+    public TextView mLblValue;
     /**
      *
      * @param activity parent activity
@@ -101,9 +101,14 @@ public class GDCListDataField extends GDCDataField {
             mView = mInflater.inflate(R.layout.list_data_field, null);
 
             mLblFieldName = (TextView)mView.findViewById(R.id.lblFieldName);
+            mLblValue = (TextView)mView.findViewById(R.id.lblValue);
             mLblDisclosureIndicator = (TextView)mView.findViewById(R.id.lblDisclosureIndicator);
 
             this.setFieldName(mFieldName);
+
+            if(mDefaultSelection != null) {
+                this.setValue(mDefaultSelection.getValueString());
+            }
 
             /*add on click listener, which opens the list*/
             mView.setOnClickListener(new View.OnClickListener() {
@@ -134,7 +139,7 @@ public class GDCListDataField extends GDCDataField {
     protected void applyStyle() {
         if(mView != null) {
             if(mStyle == null || !(mStyle instanceof GDCDataFieldStyle)) {
-                mStyle = new GDCListDataFieldDefaultStyle();
+                mStyle = GDCDefaultStyleConfig.listDataFieldDefaultStyle;
             }
             mStyle.applyStyleToField(this);
         }
@@ -149,5 +154,12 @@ public class GDCListDataField extends GDCDataField {
             mLblFieldName.setText(fieldName);
         }
         mFieldName = fieldName;
+    }
+
+    public String getValue() {
+        return mLblValue.getText().toString();
+    }
+    public void setValue(String value) {
+        mLblValue.setText(value);
     }
 }

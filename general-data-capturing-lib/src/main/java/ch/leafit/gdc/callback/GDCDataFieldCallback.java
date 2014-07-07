@@ -1,4 +1,4 @@
-package ch.leafit.gdc.core.data_fields.callback;
+package ch.leafit.gdc.callback;
 
 /**
  * Created by marius on 26/06/14.

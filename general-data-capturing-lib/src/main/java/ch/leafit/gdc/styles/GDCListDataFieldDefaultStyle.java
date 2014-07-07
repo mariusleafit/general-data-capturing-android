@@ -1,22 +1,29 @@
-package ch.leafit.gdc.core.data_fields.styles;
+package ch.leafit.gdc.styles;
+
 
 import android.graphics.Color;
 import android.graphics.Typeface;
-import ch.leafit.gdc.core.data_fields.GDCDataField;
-import ch.leafit.gdc.core.data_fields.GDCStringDataField;
+import ch.leafit.gdc.GDCListDataField;
 
 /**
- * Created by marius on 26/06/14.
+ * Created by marius on 30/06/14.
  */
-public class GDCStringDataFieldDefaultStyle extends GDCDataFieldStyle<GDCStringDataField> {
+public class GDCListDataFieldDefaultStyle extends GDCDataFieldStyle<GDCListDataField>{
     @Override
-    public void applyStyleToField(GDCStringDataField field) {
+    public void applyStyleToField(GDCListDataField field) {
         field.mView.setBackgroundColor(Color.BLACK);
+
+
         field.mLblFieldName.setTextSize(20);
         field.mLblFieldName.setTypeface(Typeface.DEFAULT_BOLD);
 
-        field.mTxtValue.setTextColor(Color.WHITE);
-        field.mTxtValue.setBackgroundColor(Color.argb(30,255,255,255));
+        field.mLblValue.setTextSize(15);
+        field.mLblFieldName.setTypeface(Typeface.DEFAULT);
+        field.mLblFieldName.setTextColor(Color.BLACK);
+
+        field.mLblDisclosureIndicator.setTextColor(Color.WHITE);
+        field.mLblDisclosureIndicator.setTextSize(20);
+        field.mLblDisclosureIndicator.setTypeface(Typeface.DEFAULT_BOLD);
 
         switch (field.getMarking()) {
             case MARKED_AS_INVALID:
@@ -31,12 +38,5 @@ public class GDCStringDataFieldDefaultStyle extends GDCDataFieldStyle<GDCStringD
         }
 
         super.applyStyleToField(field);
-        if(field.isDisabled()) {
-            field.mTxtValue.setEnabled(false);
-        } else {
-            field.mTxtValue.setEnabled(true);
-        }
-
     }
-
 }

@@ -1,15 +1,12 @@
-package ch.leafit;
+package ch.leafit.gdc;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.widget.ListView;
-import ch.leafit.gdc.core.GDCListAdapter;
-import ch.leafit.gdc.core.data_fields.*;
-import ch.leafit.gdc.core.data_fields.callback.GDCClickDataFieldCallback;
-import ch.leafit.gdc.core.data_fields.callback.GDCDataFieldCallback;
+import ch.leafit.gdc.callback.GDCClickDataFieldCallback;
+import ch.leafit.gdc.callback.GDCDataFieldCallback;
 import ch.leafit.universal_list.activities.intent_datastores.ULListActivityReturnIntentDatastore;
 import ch.leafit.universal_list.list_items.ULListItemBaseModel;
 import ch.leafit.universal_list.list_items.ULOneFieldListItemModel;
