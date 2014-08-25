@@ -34,6 +34,19 @@ public class GDCListAdapter extends BaseAdapter {
         return i;
     }
 
+    //disable listItems recycling to avoid problems (bit sluggish but since gdc aren't long lists its acceptable)
+    @Override
+    public int getViewTypeCount() {
+
+        return getCount();
+    }
+    //disable listItems recycling to avoid problems (bit sluggish but since gdc aren't long lists its acceptable)
+    @Override
+    public int getItemViewType(int position) {
+
+        return position;
+    }
+
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         GDCDataField currenetDataField = mDataFields.get(i);

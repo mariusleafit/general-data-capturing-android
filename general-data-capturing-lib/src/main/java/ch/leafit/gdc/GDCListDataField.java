@@ -9,7 +9,8 @@ import ch.leafit.gdc.styles.GDCDataFieldStyle;
 import ch.leafit.ul.activities.ULListActivity;
 import ch.leafit.ul.activities.ULSearchListActivity;
 import ch.leafit.ul.activities.intent_datastores.ULListActivityIntentDatastore;
-import ch.leafit.ul.list_items.ULListItemBaseModel;
+import ch.leafit.ul.list_items.ULListItemDataModel;
+import ch.leafit.ul.list_items.ULListItemModel;
 
 
 import java.util.ArrayList;
@@ -22,8 +23,8 @@ import java.util.ArrayList;
 public class GDCListDataField extends GDCDataField {
 
     protected String mFieldName;
-    protected ArrayList<ULListItemBaseModel> mListItems;
-    protected ULListItemBaseModel mDefaultSelection;
+    protected ArrayList<? extends ULListItemModel> mListItems;
+    protected ULListItemDataModel mCurrentSelection;
 
     protected boolean mSearchable;
     protected int mCHOICE_MODE;
@@ -40,10 +41,10 @@ public class GDCListDataField extends GDCDataField {
      * @param listItems items to be showed in the list
      * @param defaultSelection defaultValue
      */
-    public GDCListDataField(Activity activity, int tag, String fieldName, ArrayList<ULListItemBaseModel> listItems,
-                            ULListItemBaseModel defaultSelection) {
+    public GDCListDataField(Activity activity, int tag, String fieldName, ArrayList<? extends ULListItemModel> listItems,
+                            ULListItemDataModel defaultSelection) {
         this(activity, tag, fieldName, listItems,defaultSelection,false,ListView.CHOICE_MODE_SINGLE);
-        mDefaultSelection = defaultSelection;
+        mCurrentSelection = defaultSelection;
     }
 
     /**
@@ -56,10 +57,10 @@ public class GDCListDataField extends GDCDataField {
      * @param searchable is the list searchable? (default false)
      * @param CHOICE_MODE ListView.CHOICE_MODE (default SINGLE)
      */
-    public GDCListDataField(Activity activity, int tag, String fieldName, ArrayList<ULListItemBaseModel> listItems,
-                            ULListItemBaseModel defaultSelection, boolean searchable, int CHOICE_MODE) {
+    public GDCListDataField(Activity activity, int tag, String fieldName, ArrayList<? extends ULListItemModel> listItems,
+                            ULListItemDataModel defaultSelection, boolean searchable, int CHOICE_MODE) {
         this(activity, tag, fieldName, listItems);
-        mDefaultSelection = defaultSelection;
+        mCurrentSelection = defaultSelection;
         mSearchable = searchable;
         mCHOICE_MODE = CHOICE_MODE;
     }
@@ -71,7 +72,7 @@ public class GDCListDataField extends GDCDataField {
      * @param fieldName string to be shown in the name-field
      * @param listItems items to be showed in the list
      */
-    public GDCListDataField(Activity activity, int tag, String fieldName, ArrayList<ULListItemBaseModel> listItems) {
+    public GDCListDataField(Activity activity, int tag, String fieldName, ArrayList<? extends ULListItemModel> listItems) {
         this(activity,tag,fieldName,listItems,false, ListView.CHOICE_MODE_SINGLE);
         mFieldName = fieldName;
         mListItems = listItems;
@@ -86,7 +87,7 @@ public class GDCListDataField extends GDCDataField {
      * @param searchable is the list searchable? (default false)
      * @param CHOICE_MODE ListView.CHOICE_MODE (default SINGLE)
      */
-    public GDCListDataField(Activity activity, int tag, String fieldName, ArrayList<ULListItemBaseModel> listItems,
+    public GDCListDataField(Activity activity, int tag, String fieldName, ArrayList<? extends ULListItemModel> listItems,
                             boolean searchable, int CHOICE_MODE) {
         super(activity, tag);
         mFieldName = fieldName;
@@ -106,8 +107,8 @@ public class GDCListDataField extends GDCDataField {
 
             this.setFieldName(mFieldName);
 
-            if(mDefaultSelection != null) {
-                this.setValue(mDefaultSelection.getValueString());
+            if(mCurrentSelection != null) {
+                this.setCurrentSelection(mCurrentSelection);
             }
 
             /*add on click listener, which opens the list*/
@@ -116,7 +117,7 @@ public class GDCListDataField extends GDCDataField {
                 public void onClick(View view) {
                     /*open ListViewActivity*/
                     ULListActivityIntentDatastore intentDatastore = new ULListActivityIntentDatastore(mFieldName,mListItems,
-                            mDefaultSelection,mCHOICE_MODE);
+                            mCurrentSelection,mCHOICE_MODE);
 
                     Intent listIntent = null;
                     if(mSearchable) {
@@ -156,10 +157,21 @@ public class GDCListDataField extends GDCDataField {
         mFieldName = fieldName;
     }
 
-    public String getValue() {
-        return mLblValue.getText().toString();
+
+    public void setCurrentSelection(ULListItemDataModel selection) {
+        mCurrentSelection = selection;
+        if(mLblValue != null && selection != null) {
+            mLblValue.setText(selection.getTitle());
+        } else if(mLblValue != null && selection == null) {
+            mLblValue.setText("");
+        }
     }
-    public void setValue(String value) {
-        mLblValue.setText(value);
+
+    public ULListItemDataModel getCurrentSelection() {
+        return mCurrentSelection;
+    }
+
+    public void setListItems(ArrayList<? extends ULListItemModel> listItems) {
+        mListItems = listItems;
     }
 }

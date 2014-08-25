@@ -91,12 +91,12 @@ public class GDCStringDataField extends GDCDataField {
 
                     @Override
                     public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-                        mCallback.valueChanged(mTag, charSequence.toString());
+
                     }
 
                     @Override
                     public void afterTextChanged(Editable editable) {
-
+                        mCallback.valueChanged(mTag, editable.toString());
                     }
                 });
 

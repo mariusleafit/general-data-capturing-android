@@ -101,6 +101,8 @@ public class GDCDateDataField extends GDCDataField implements TimePickerDialog.O
         c.set(Calendar.HOUR_OF_DAY,hourOfDay);
         c.set(Calendar.MINUTE, minute);
         setDate(c.getTime());
+
+        mCallback.valueChanged(mTag,getDate());
     }
 
     /*OnDateSetListener*/
@@ -113,6 +115,8 @@ public class GDCDateDataField extends GDCDataField implements TimePickerDialog.O
         c.set(Calendar.MONTH, month);
         c.set(Calendar.DAY_OF_MONTH, day);
         setDate(c.getTime());
+
+        mCallback.valueChanged(mTag,getDate());
     }
 
     @Override
@@ -143,8 +147,10 @@ public class GDCDateDataField extends GDCDataField implements TimePickerDialog.O
     public void setDate(Date date) {
         mSelectedDate = date;
 
-        mLblDate.setText(new SimpleDateFormat("dd-MM-yyyy").format(date));
-        mLblTime.setText(new SimpleDateFormat("HH:mm").format(date));
+        if(mLblDate != null && mLblTime != null) {
+            mLblDate.setText(new SimpleDateFormat("dd-MM-yyyy").format(date));
+            mLblTime.setText(new SimpleDateFormat("HH:mm").format(date));
+        }
     }
 
     public static class TimePickerFragment extends DialogFragment{

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="date_data_field_date">Date</string>
-    <string name="date_data_field_time">Temps du jour</string>
+    <string name="date_data_field_time">Heure</string>
     <string name="lib_name">general-data-capturing-lib</string>
 </resources>

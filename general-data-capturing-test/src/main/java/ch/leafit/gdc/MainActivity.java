@@ -7,11 +7,8 @@ import android.util.Log;
 import android.widget.ListView;
 import ch.leafit.gdc.callback.GDCClickDataFieldCallback;
 import ch.leafit.gdc.callback.GDCDataFieldCallback;
-import ch.leafit.universal_list.activities.intent_datastores.ULListActivityReturnIntentDatastore;
-import ch.leafit.universal_list.list_items.ULListItemBaseModel;
-import ch.leafit.universal_list.list_items.ULOneFieldListItemModel;
-import ch.leafit.universal_list.list_items.ULSectionTitleListItemModel;
-import ch.leafit.universal_list.list_items.ULTwoFieldsListItemModel;
+import ch.leafit.ul.activities.intent_datastores.ULListActivityReturnIntentDatastore;
+import ch.leafit.ul.list_items.*;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -72,20 +69,20 @@ public class MainActivity extends FragmentActivity{
         dataFields.add(clickDataField);
 
 
-        ArrayList<ULListItemBaseModel> listItems = new ArrayList<ULListItemBaseModel>();
-        listItems.add(new ULOneFieldListItemModel("Marikus"));
-        listItems.add(new ULOneFieldListItemModel("Neuchatel"));
-        listItems.add(new ULOneFieldListItemModel("Computer"));
-        listItems.add(new ULSectionTitleListItemModel("Section"));
-        listItems.add(new ULOneFieldListItemModel("IntelliJ"));
-        listItems.add(new ULOneFieldListItemModel("Einkaufen"));
-        listItems.add(new ULTwoFieldsListItemModel("Marius","Gächter"));
-        listItems.add(new ULTwoFieldsListItemModel("Marius","Gächter"));
-        listItems.add(new ULOneFieldListItemModel("Marius"));
+        ArrayList<ULListItemModel> simpleItems = new ArrayList<ULListItemModel>();
+        simpleItems.add(new ULOneFieldListItemModel(new ULListItemData("Marikus")));
+        simpleItems.add(new ULOneFieldListItemModel(new ULListItemData("Neuchatel")));
+        simpleItems.add(new ULOneFieldListItemModel(new ULListItemData("Computer")));
+        simpleItems.add(new ULSectionTitleListItemModel(new ULListItemData("Section")));
+        simpleItems.add(new ULOneFieldListItemModel(new ULListItemData("IntelliJ")));
+        simpleItems.add(new ULOneFieldListItemModel(new ULListItemData("Einkaufen")));
+        simpleItems.add(new ULTwoFieldsListItemModel(new ULListItemData("Marius","Gächter")));
+        simpleItems.add(new ULTwoFieldsListItemModel(new ULListItemData("Marius","Gächter")));
+        simpleItems.add(new ULOneFieldListItemModel(new ULListItemData("Marius")));
 
 
         GDCListDataField listDataField = new GDCListDataField(this,list_data_field_tag,"TestList",
-                listItems,true,ListView.CHOICE_MODE_MULTIPLE);
+                simpleItems,true,ListView.CHOICE_MODE_MULTIPLE);
 
         dataFields.add(listDataField);
 

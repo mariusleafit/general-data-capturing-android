@@ -16,7 +16,11 @@ public class GDCSectionTitleDataField extends GDCDataField {
     public TextView mLblTitle;
 
     public GDCSectionTitleDataField(Activity activity, String title) {
-        super(activity, -1);
+        this(activity,title,-1);
+    }
+
+    public GDCSectionTitleDataField(Activity activity, String title, int tag) {
+        super(activity,tag);
         mTitle = title;
     }
 

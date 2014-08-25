@@ -1,6 +1,8 @@
 package ch.leafit.gdc;
 
 import android.app.Activity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -44,6 +46,29 @@ public class GDCIntegerDataField extends GDCDataField {
             mTxtInteger = (EditText)mView.findViewById(R.id.txtInteger);
             mBtnPlus = (ImageButton)mView.findViewById(R.id.btnPlus);
             mBtnMinus = (ImageButton)mView.findViewById(R.id.btnMinus);
+
+
+            mTxtInteger.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    /*call callbakc*/
+                    Integer value = 0;
+                    try {
+                        value = Integer.valueOf(s.toString());
+                    } catch (NumberFormatException e){}
+                    mCallback.valueChanged(mTag,value);
+                }
+            });
 
             mBtnPlus.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -95,7 +120,5 @@ public class GDCIntegerDataField extends GDCDataField {
 
     public void setInteger(Integer integer) {
         mTxtInteger.setText(String.valueOf(integer));
-        /*call callbakc*/
-        mCallback.valueChanged(mTag,integer);
     }
 }
